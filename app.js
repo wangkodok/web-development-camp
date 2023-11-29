@@ -1,4 +1,13 @@
 const express = require("express");
+const mongoose = require("mongoose");
+
+main().then(() => console.log("성공?"));
+main().catch((err) => console.log(err));
+async function main() {
+  mongoose.set("strictQuery", true);
+  await mongoose.connect("mongodb://localhost:27017/yelp-camp");
+}
+
 const app = express();
 const path = require("path");
 
