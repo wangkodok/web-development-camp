@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const Campground = require("./models/campground");
 
 main().then(() => console.log("성공?"));
 main().catch((err) => console.log(err));
@@ -16,6 +17,15 @@ app.set("views", path.join(__dirname, "views"));
 
 app.get("/", (req, res) => {
   res.render("home");
+});
+
+app.get("/makecampground", async (req, res) => {
+  const camp = new Campground({
+    title: "My Backyard",
+    description: "cheap camping",
+  });
+  await camp.save();
+  res.send(camp);
 });
 
 app.listen("3000", () => {
