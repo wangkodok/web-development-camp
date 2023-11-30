@@ -56,6 +56,12 @@ app.put("/campgrounds/:id", async (req, res) => {
   res.redirect(`/campgrounds/${campground._id}`);
 });
 
+app.delete("/campgrounds/:id", async (req, res) => {
+  const { id } = req.params;
+  await Campground.findByIdAndDelete(id);
+  res.redirect("/campgrounds");
+});
+
 app.listen("3000", () => {
   console.log("3000 port 성공");
   console.log("http://localhost:3000/");
