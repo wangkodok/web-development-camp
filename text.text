@@ -1,0 +1,6 @@
+db.users.find({username: req.body.username});
+
+{"$gt": ""}
+
+db.users.find({username: {"$gt": ""}});
+
